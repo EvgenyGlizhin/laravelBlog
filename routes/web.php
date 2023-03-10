@@ -23,7 +23,11 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function(){
         Route::get('/', 'App\Http\Controllers\Admin\Main\IndexController');
     });
     Route::group(['namespace' => 'App\Http\Controllers\Admin\Category', 'prefix' => 'categories'], function () {
-        Route::get('/', 'App\Http\Controllers\Admin\Category\IndexController');
+        Route::get('/', 'App\Http\Controllers\Admin\Category\IndexController')->name('admin.category.index');
+        Route::get('/create', 'App\Http\Controllers\Admin\Category\CreateController')->name('admin.category.create');
+        Route::post('/', 'App\Http\Controllers\Admin\Category\StoreController')->name('admin.category.store');
+        Route::get('/{category}', 'App\Http\Controllers\Admin\Category\ShowController')->name('admin.category.show');
+
     });
 
 });
