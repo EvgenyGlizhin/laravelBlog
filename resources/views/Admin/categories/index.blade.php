@@ -48,7 +48,8 @@
                                     <tr>
                                         <td>{{$category->id}}</td>
                                         <td>{{$category->title}}</td>
-                                        <td><a href="{{route('admin.category.show', $category->id)}}"><h6>Изменить</h6></a></td>
+                                        <td><a href="{{route('admin.category.show', $category->id)}}"><h6>Просмотреть</h6></a></td>
+                                        <td><a href="{{route('admin.category.edit', $category->id)}}"><h6>Изменить</h6></a></td>
                                     </tr>
                                     @endforeach
                                     </tbody>

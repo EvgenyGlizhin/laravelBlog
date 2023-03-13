@@ -27,6 +27,8 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function(){
         Route::get('/create', 'App\Http\Controllers\Admin\Category\CreateController')->name('admin.category.create');
         Route::post('/', 'App\Http\Controllers\Admin\Category\StoreController')->name('admin.category.store');
         Route::get('/{category}', 'App\Http\Controllers\Admin\Category\ShowController')->name('admin.category.show');
+        Route::get('/{category}/edit', 'App\Http\Controllers\Admin\Category\EditController')->name('admin.category.edit');
+        Route::patch('/{category}', 'App\Http\Controllers\Admin\Category\UpdateController')->name('admin.category.update');
 
     });
 
