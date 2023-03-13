@@ -9,6 +9,13 @@
                 <div class="col-sm-6">
                     <h1 class="m-0">{{$category->title}}</h1>
                     <a href="{{route('admin.category.edit', $category->id)}}"><h6>Изменить</h6></a>
+                    <form action="{{route('admin.category.delete', $category->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="border-0 bg-transparent">
+                            <a class="text-danger" role="button"><h6>Удалить</h6></a>
+                        </button>
+                    </form>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">

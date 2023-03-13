@@ -50,6 +50,15 @@
                                         <td>{{$category->title}}</td>
                                         <td><a href="{{route('admin.category.show', $category->id)}}"><h6>Просмотреть</h6></a></td>
                                         <td><a href="{{route('admin.category.edit', $category->id)}}"><h6>Изменить</h6></a></td>
+                                        <td>
+                                            <form action="{{route('admin.category.delete', $category->id)}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="border-0 bg-transparent">
+                                            <a class="text-danger" role="button"><h6>Удалить</h6></a>
+                                                </button>
+                                            </form>
+                                        </td>
                                     </tr>
                                     @endforeach
                                     </tbody>
