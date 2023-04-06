@@ -8,31 +8,12 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Storage;
 use function dd;
 
-class StoreController extends Controller
+class StoreController extends BaseController
 {
     public function __invoke(StoreRequest $request)
     {
-
-        try {
-
             $data = $request->validated();
-
-            $tagIds = $data['tags_ids'];
-            unset($data['tags_ids']);
-
-
-            if (isset($data['preview_image'])) {
-                $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
-            }
-            if (isset($data['main_image'])) {
-                $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
-            }
-            $post = Post::firstOrCreate($data);
-            $post->tags()->attach($tagIds);
-        } catch (\Exception $exception) {
-            abort(404);
-        }
-
+            $this->service->store($data);
 
         return redirect()->route('admin.post.index');
     }

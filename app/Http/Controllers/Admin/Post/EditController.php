@@ -8,7 +8,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use function dd;
 
-class EditController extends Controller
+class EditController extends BaseController
 {
     public function __invoke(Post $post)
     {

@@ -8,7 +8,7 @@ use App\Models\Category;
 use App\Models\Post;
 use function dd;
 
-class DeleteController extends Controller
+class DeleteController extends BaseController
 {
     public function __invoke(Post $post)
     {
