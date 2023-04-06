@@ -54,6 +54,16 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function(){
         Route::delete('/{tag}', 'App\Http\Controllers\Admin\Tag\DeleteController')->name('admin.tag.delete');
 
     });
+
+    Route::group(['namespace' => 'App\Http\Controllers\Admin\User', 'prefix' => 'user'], function () {
+        Route::get('/', 'App\Http\Controllers\Admin\User\IndexController')->name('admin.user.index');
+        Route::get('/create', 'App\Http\Controllers\Admin\User\CreateController')->name('admin.user.create');
+        Route::post('/', 'App\Http\Controllers\Admin\User\StoreController')->name('admin.user.store');
+        Route::get('/{user}', 'App\Http\Controllers\Admin\User\ShowController')->name('admin.user.show');
+        Route::get('/{user}/edit', 'App\Http\Controllers\Admin\User\EditController')->name('admin.user.edit');
+        Route::patch('/{user}', 'App\Http\Controllers\Admin\User\UpdateController')->name('admin.user.update');
+        Route::delete('/{user}', 'App\Http\Controllers\Admin\User\DeleteController')->name('admin.user.delete');
+    });
 });
 
 Auth::routes();
