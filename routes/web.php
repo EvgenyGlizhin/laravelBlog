@@ -18,7 +18,7 @@ Route::group(['namespsce' => 'App\Http\Controllers\Main'], function () {
     Route::get('/', 'App\Http\Controllers\Main\IndexController');
 });
 
-Route::group(['namespase' => 'Admin', 'prefix' => 'admin'], function(){
+Route::group(['namespase' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(){
     Route::group(['namespsce' => 'App\Http\Controllers\Admin\Main'], function () {
         Route::get('/', 'App\Http\Controllers\Admin\Main\IndexController');
     });

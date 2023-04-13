@@ -73,7 +73,7 @@
                                 <div class="text-danger">{{$message}}</div>
                                 @enderror
                                 <div class="form-group w-50">
-                                    <label>Выберите категорию</label>
+                                    <label>Выберите роль</label>
                                     <select name = "category_id" class="form-control">
                                         @foreach($categories as $category)
                                         <option value="{{$category->id}}"
