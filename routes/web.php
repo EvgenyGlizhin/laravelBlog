@@ -18,7 +18,7 @@ Route::group(['namespsce' => 'App\Http\Controllers\Main'], function () {
     Route::get('/', 'App\Http\Controllers\Main\IndexController');
 });
 
-Route::group(['namespase' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(){
+Route::group(['namespase' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified']], function(){
     Route::group(['namespsce' => 'App\Http\Controllers\Admin\Main'], function () {
         Route::get('/', 'App\Http\Controllers\Admin\Main\IndexController');
     });
@@ -66,6 +66,6 @@ Route::group(['namespase' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
     });
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
