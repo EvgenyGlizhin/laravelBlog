@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('personal.layouts.main')
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Посты</h1>
+                    <h1 class="m-0">Понравившееся посты</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.post.index')}}">Главная</a></li>
-                        <li class="breadcrumb-item active">Посты</li>
+                        <li class="breadcrumb-item"><a href="#">Понравившееся посты</a></li>
+                        <li class="breadcrumb-item active">Dashboard v1</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -25,11 +25,6 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-1 mb-3">
-                    <a href="{{route('admin.post.create')}}"  class="btn btn-block btn-primary">Добавить</a>
-                </div>
-            </div>
-            <div class ="row">
                 <div class="col-6">
                     <div class="col-12">
                         <div class="card">
@@ -45,21 +40,20 @@
                                     </thead>
                                     <tbody>
                                     @foreach($posts as $post)
-                                    <tr>
-                                        <td>{{$post->id}}</td>
-                                        <td>{{$post->title}}</td>
-                                        <td><a href="{{route('admin.post.show', $post->id)}}"><h6>Просмотреть</h6></a></td>
-                                        <td><a href="{{route('admin.post.edit', $post->id)}}"><h6>Изменить</h6></a></td>
-                                        <td>
-                                            <form action="{{route('admin.post.delete', $post->id)}}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="border-0 bg-transparent">
-                                            <a class="text-danger" role="button"><h6>Удалить</h6></a>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{$post->id}}</td>
+                                            <td>{{$post->title}}</td>
+                                            <td><a href="{{route('admin.post.show', $post->id)}}"><h6>Просмотреть</h6></a></td>
+
+                                                <form action="{{route('personal.liked.delete', $post->id)}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="border-0 bg-transparent">
+                                                        <a class="text-danger" role="button"><h6>Удалить</h6></a>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
@@ -68,7 +62,7 @@
                         </div>
                         <!-- /.card -->
                     </div>
-            </div>
+                </div>
             </div>
 
         </div><!-- /.container-fluid -->

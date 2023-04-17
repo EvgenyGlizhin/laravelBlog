@@ -18,10 +18,26 @@ Route::group(['namespsce' => 'App\Http\Controllers\Main'], function () {
     Route::get('/', 'App\Http\Controllers\Main\IndexController');
 });
 
+Route::group(['namespase' => 'Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function(){
+    Route::group(['namespace' => 'App\Http\Controllers\Personal\Main'], function () {
+        Route::get('/', 'App\Http\Controllers\Personal\Main\IndexController')->name('personal.main.index');
+    });
+
+    Route::group(['namespsce' => 'App\Http\Controllers\Personal\Liked', 'prefix' => 'liked'], function () {
+        Route::get('/', 'App\Http\Controllers\Personal\Liked\IndexController')->name('personal.liked.index');
+        Route::delete('/{post}', 'App\Http\Controllers\Personal\Liked\DeleteController')->name('personal.liked.delete');
+    });
+
+    Route::group(['namespsce' => 'App\Http\Controllers\Personal\Comment', 'prefix' => 'comments'], function () {
+        Route::get('/', 'App\Http\Controllers\Personal\Comment\IndexController')->name('personal.comment.index');
+    });
+});
+
 Route::group(['namespase' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth', 'admin', 'verified']], function(){
     Route::group(['namespsce' => 'App\Http\Controllers\Admin\Main'], function () {
-        Route::get('/', 'App\Http\Controllers\Admin\Main\IndexController');
+        Route::get('/', 'App\Http\Controllers\Admin\Main\IndexController')->name('admin.main.index');
     });
+
 
     Route::group(['namespace' => 'App\Http\Controllers\Admin\Post', 'prefix' => 'posts'], function () {
         Route::get('/', 'App\Http\Controllers\Admin\Post\IndexController')->name('admin.post.index');
