@@ -14,8 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['namespsce' => 'App\Http\Controllers\Main'], function () {
-    Route::get('/', 'App\Http\Controllers\Main\IndexController');
+Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
+    Route::get('/', 'App\Http\Controllers\Main\IndexController')->name('main.index');
+});
+
+Route::group(['namespace' => 'App\Http\Controllers\Post', 'prefix' => 'posts'], function () {
+    Route::get('/', 'IndexController')->name('post.index');
+    Route::get('/{post}', 'ShowController')->name('post.show');
 });
 
 Route::group(['namespase' => 'Personal', 'prefix' => 'personal', 'middleware' => ['auth', 'verified']], function(){
@@ -30,6 +35,9 @@ Route::group(['namespase' => 'Personal', 'prefix' => 'personal', 'middleware' =>
 
     Route::group(['namespsce' => 'App\Http\Controllers\Personal\Comment', 'prefix' => 'comments'], function () {
         Route::get('/', 'App\Http\Controllers\Personal\Comment\IndexController')->name('personal.comment.index');
+        Route::get('/{comment}/edit', 'App\Http\Controllers\Personal\Comment\EditController')->name('personal.comment.edit');
+        Route::patch('/{comment}', 'App\Http\Controllers\Personal\Comment\UpdateController')->name('personal.comment.update');
+        Route::delete('/{comment}', 'App\Http\Controllers\Personal\Comment\DeleteController')->name('personal.comment.delete');
     });
 });
 
