@@ -14,6 +14,8 @@ class Post extends Model
     protected $table = 'posts';
     protected $guarded = false;
     protected $fillable = ['title', 'content', 'preview_image', 'main_image', 'category_id', 'tags_ids'];
+    protected $withCount = ['LikedUsers'];
+    protected $with = ['category'];
 
     public function tags()
     {
