@@ -49,6 +49,16 @@
                                         <td>Название</td>
                                         <td>{{$user->name}}</td>
                                     </tr>
+                                    <tr>
+                                        <td>Роль</td>
+                                        <td>
+                                            @if($user->role === 0)
+                                            Admin
+                                            @else
+                                            User
+                                            @endif
+                                        </td>
+                                    </tr>
 
                                     </tbody>
                                 </table>

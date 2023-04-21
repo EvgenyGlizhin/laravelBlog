@@ -28,6 +28,7 @@
             <div class="col-md-8">
                 <section>
                     <div class="row blog-post-row">
+                        @if(isset ($randomPosts))
                         @foreach($randomPosts as $post)
                         <div class="col-md-6 blog-post" data-aos="fade-up">
                             <div class="blog-post-thumbnail-wrapper">
@@ -39,6 +40,7 @@
                             </a>
                         </div>
                         @endforeach
+                            @endif
                     </div>
                 </section>
             </div>

@@ -11,8 +11,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Комментарии</a></li>
-                        <li class="breadcrumb-item active">Dashboard v1</li>
+                        <li class="breadcrumb-item"><a href="{{route('personal.main.index')}}">Главная</a></li>
+                        <li class="breadcrumb-item active">Комментарии</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -35,6 +35,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Название</th>
+                                        <th>Статья</th>
                                         <th>Действия</th>
                                     </tr>
                                     </thead>
@@ -43,8 +44,9 @@
                                         <tr>
                                             <td>{{$comment->id}}</td>
                                             <td>{{$comment->message}}</td>
+                                            <td>{{$comment->post->title}}</td>
                                             <td><a href="{{route('personal.comment.edit', $comment->id)}}"><h6>Изменить</h6></a></td>
-
+                                            <td>
                                             <form action="{{route('personal.comment.delete', $comment->id)}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')

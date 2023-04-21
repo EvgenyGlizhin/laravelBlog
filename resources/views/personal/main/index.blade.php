@@ -12,7 +12,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Главная</a></li>
-                        <li class="breadcrumb-item active">Dashboard v1</li>
+                        <li class="breadcrumb-item active"></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -29,7 +29,7 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>10</h3>
+                            <h3>{{$data['likePostsCount']}}</h3>
 
                             <p>Понравившиеся посты</p>
                         </div>
@@ -42,7 +42,7 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>10<sup style="font-size: 20px"></sup></h3>
+                            <h3>{{$data['comments']}}<sup style="font-size: 20px"></sup></h3>
 
                             <p>Комментарии</p>
                         </div>

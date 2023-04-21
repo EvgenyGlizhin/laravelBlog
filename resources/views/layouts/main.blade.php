@@ -17,11 +17,9 @@
 <header class="edica-header">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#"><img src="{{asset('assets/images/logo.svg')}}" alt="Edica"></a>
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#edicaMainNav"
-                    aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <div class="">
+            <h2>Евгений Глижин блог</h2>
+             </div>
             <div class="collapse navbar-collapse" id="edicaMainNav">
                 <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                     <li class="nav-item">
@@ -30,15 +28,23 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('category.index')}}">Категории</a>
                     </li>
-                    <li class="nav-item">
                         @auth()
+                    <li class="nav-item">
                             <a class="nav-link" href="{{route('personal.main.index')}}">Личный кабинет</a>
                     </li>
+                    @if(auth()->user()->role === 0)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.main.index')}}">Админка</a>
+                            </li>
+                        @endif
                     <li>
                         <form action="{{route('logout')}}" method="post">
                             @csrf
                             <input class="btn btn-outline-primary" type="submit" value="Выйти">
                         </form>
+                    </li>
+                    <li class="nav-item ml-3">
+                        <h3>{{auth()->user()->name}}</h3>
                     </li>
                     @endauth
                     @guest()
@@ -59,11 +65,9 @@
     <div class="container">
         <div class="row footer-widget-area">
             <div class="col-md-3">
-                <a href="index.html" class="footer-brand-wrapper">
-                    <img src="{{asset('assets/images/logo.svg')}}" alt="edica logo">
-                </a>
-                <p class="contact-details">hello@edica.com</p>
-                <p class="contact-details">+23 3000 000 00</p>
+                <p class="contact-details">Евгений Глижин Блог</p>
+                <p class="contact-details">evgenyglizhin@gmail.com</p>
+                <p class="contact-details">+38 095 20 29 763</p>
                 <nav class="footer-social-links">
                     <a href="#!"><i class="fab fa-facebook-f"></i></a>
                     <a href="#!"><i class="fab fa-twitter"></i></a>
